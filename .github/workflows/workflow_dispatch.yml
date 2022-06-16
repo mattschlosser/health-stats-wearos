@@ -10,8 +10,8 @@ jobs:
         env:
             ENCODED_STRING: ${{ secrets.KEYSTORE }}
         run: |
-            TMP_KEYSTORE_FILE_PATH="${RUNNER_TEMP}"/keystore
-            mkdir "${TMP_KEYSTORE_FILE_PATH}"
+            TMP_KEYSTORE_FILE_PATH="${RUNNER_TEMP}"/app/keystore
+            mkdir -p "${TMP_KEYSTORE_FILE_PATH}"
             echo $ENCODED_STRING | base64 -di > "${TMP_KEYSTORE_FILE_PATH}"/your_keystore.jks
       - uses: actions/checkout@v2
       - name: set up JDK 1.11
